@@ -11,10 +11,7 @@ function displayPunchLine() {
 	punchline.style.display = 'block';
 	punchline.classList.add('bubble');
 	punchline.innerHTML = jokeArray[0].punchline;
-}
-function getNewJoke() {
-	punchline.style.display = 'none';
-	getJokes();
+	punchlineBtn.classList.add('hidden');
 }
 function displayJokes() {
 	setup.innerHTML = jokeArray[0].setup;
@@ -27,11 +24,12 @@ async function getJokes() {
 			'https://official-joke-api.appspot.com/jokes/programming/random'
 		);
 		jokeArray = await response.json();
+		punchline.style.display = 'none';
 		displayJokes();
 	} catch (error) {
 		console.log(error);
 	}
 }
 
-newJokeBtn.addEventListener('click', getNewJoke);
+newJokeBtn.addEventListener('click', getJokes);
 getJokes();
