@@ -27,7 +27,6 @@ async function getJokes() {
 			'https://official-joke-api.appspot.com/jokes/programming/random'
 		);
 		jokeArray = await response.json();
-		console.log(jokeArray);
 		displayJokes();
 	} catch (error) {
 		console.log(error);
